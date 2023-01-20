@@ -2,10 +2,16 @@
 
 connpass APIクライアント
 
+## インストール
+
+```bash
+pip install git+https://github.com/fin-py/connpass-client.git
+```
+
 ## つかいかた
 
 ```bash
-python -m connpass_client <パラメータ> <値>
+python -m connpass_client --<パラメータ> <値>
 ```
 
 `パラメータ` および `値` は [connpass API リファレンス](https://connpass.com/about/api/) を参照
@@ -15,7 +21,7 @@ python -m connpass_client <パラメータ> <値>
 ### 実行例
 
 ```bash
-python -m connpass_client event_id 266898
+python -m connpass_client --event_id 266898 
 {'events': [{'accepted': 15,
              'address': '',
              'catch': 'CHAPTER 2 テスト関数を書く',
