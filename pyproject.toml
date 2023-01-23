@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "connpass-client"
-version = "0.2.0"
+version = "0.3.0"
 description = ""
 authors = ["driller"]
 readme = "README.md"
@@ -12,6 +12,8 @@ python = "^3.10"
 
 [tool.poetry.group.dev.dependencies]
 black = "^22.12.0"
+mypy = "^0.991"
+pytest = "^7.2.1"
 
 [build-system]
 requires = ["poetry-core"]

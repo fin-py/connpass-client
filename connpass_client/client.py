@@ -4,8 +4,8 @@ from urllib import parse, request
 
 class ConnpassClient:
     def create_request(self, **kwargs) -> request.Request:
-        query = {k:v for k,v in kwargs.items() if v is not None}
-        url = parse.urlunparse(
+        query: dict = {k:v for k,v in kwargs.items() if v is not None}
+        url: str = parse.urlunparse(
             (
                 "https",
                 "connpass.com",
@@ -19,7 +19,7 @@ class ConnpassClient:
 
     
     def get(self, **kwargs) -> dict:
-        req = self.create_request(**kwargs)
+        req: request.Request = self.create_request(**kwargs)
         with request.urlopen(req) as res:
-            data = json.load(res)
+            data: dict = json.load(res)
         return data

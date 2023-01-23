@@ -11,7 +11,7 @@ pip install git+https://github.com/fin-py/connpass-client.git
 ## つかいかた
 
 ```bash
-python -m connpass_client --<パラメータ> <値>
+python -m connpass_client --<パラメータ> <値> [--json <ファイル名>] [--csv <ファイル名>] 
 ```
 
 `パラメータ` および `値` は [connpass API リファレンス](https://connpass.com/about/api/) を参照
