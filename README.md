@@ -1,5 +1,7 @@
 # connpass-client
 
+![Coverage Status](./coverage-badge.svg)
+
 connpass APIクライアント
 
 ## インストール
