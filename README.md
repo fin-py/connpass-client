@@ -1,5 +1,9 @@
 # connpass-client
 
+
+[![Coverage Status](https://raw.githubusercontent.com/guoguoblack/connpass-client/coverage/coverage-badge.svg)](https://guoguoblack.github.io/connpass-client/)
+
+
 connpass APIクライアント
 
 ## インストール
