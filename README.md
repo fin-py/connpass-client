@@ -1,5 +1,8 @@
 # connpass-client
 
+
+[![Coverage Status](https://raw.githubusercontent.com/kazuchida/connpass-client/coverage/coverage-badge.svg)](https://kazuchida.github.io/connpass-client/)
+
 connpass APIクライアント
 
 ## インストール
