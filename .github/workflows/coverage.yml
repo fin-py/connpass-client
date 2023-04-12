@@ -1,0 +1,36 @@
+name: coverage
+on:
+  push:
+    branches: [ main ]
+env:
+  BRANCH_NAME: coverage
+jobs:
+  generate-coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: pip install
+        uses: actions/setup-python@v3
+        with:
+          python-version: '3.10'
+      - run: |
+          python -m pip install --upgrade pip
+          python -m pip install pytest coverage pytest-cov "genbadge[coverage]"
+      - name: genarate coverage and badge
+        run: |
+          pytest --cov=connpass_client tests
+          coverage html
+          mv htmlcov/* .
+          coverage xml
+          genbadge coverage -i - < coverage.xml
+      - name: commit and push
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git fetch origin $BRANCH_NAME && git push --delete origin $BRANCH_NAME
+          git checkout --orphan $BRANCH_NAME
+          git rm -rf .
+          git add .
+          git commit -m "generate coverage"
+          git push origin $BRANCH_NAME
