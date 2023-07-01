@@ -21,7 +21,7 @@ python -m connpass_client --<パラメータ> <値> [--json <ファイル名>] [
 ### 実行例
 
 ```bash
-python -m connpass_client --event_id 266898 
+python -m connpass_client --event-id 266898 
 {'events': [{'accepted': 15,
              'address': '',
              'catch': 'CHAPTER 2 テスト関数を書く',
@@ -88,4 +88,26 @@ python -m connpass_client --event_id 266898
  'results_available': 1,
  'results_returned': 1,
  'results_start': 1}
+```
+
+```bash
+python -m connpass_client --help
+Usage: python -m connpass_client [OPTIONS]
+
+Options:
+  --event-id TEXT        イベント毎に割り当てられた番号で検索します。複数指定可能です
+  --keyword TEXT         イベントのタイトル、キャッチ、概要、住所をAND条件部分一致で検索します。複数指定可能です
+  --keyword-or TEXT      イベントのタイトル、キャッチ、概要、住所をOR条件部分一致で検索します。複数指定可能です
+  --ym TEXT              指定した年月に開催されているイベントを検索します。複数指定可能です
+  --ymd TEXT             指定した年月日に開催されているイベントを検索します。複数指定可能です
+  --nickname TEXT        指定したニックネームのユーザが参加しているイベントを検索します。複数指定可能です
+  --owner-nickname TEXT  指定したニックネームのユーザが管理しているイベントを検索します。複数指定可能です
+  --series-id TEXT       グループ 毎に割り当てられた番号で、ひもづいたイベントを検索します。複数指定可能です
+  --start TEXT           検索結果の何件目から出力するかを指定します
+  --order TEXT           検索結果の表示順を、更新日時順、開催日時順、新着順で指定します
+  --count TEXT           検索結果の最大出力データ数を指定します
+  --format TEXT          レスポンスの形式を指定します
+  --json TEXT            指定したファイルにJSON形式で保存します
+  --csv TEXT             指定したファイルにCSV形式で保存します
+  --help                 Show this message and exit.
 ```
