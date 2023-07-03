@@ -38,3 +38,7 @@ Options:
     runner = CliRunner()
     result = runner.invoke(connpass_client.app, ["--help"])
     assert expected_result == result.stdout.rstrip()
+
+
+def test_version():
+    print(connpass_client.__version__)

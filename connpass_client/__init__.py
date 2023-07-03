@@ -1,3 +1,4 @@
+from importlib.metadata import version
 from pprint import pprint
 
 import typer
@@ -6,6 +7,7 @@ from typing_extensions import Annotated
 from connpass_client.client import ConnpassClient
 from connpass_client.io import Writer
 
+__version__ = version(__name__)
 app = typer.Typer()
 
 
@@ -37,24 +39,42 @@ def main(
     format: Annotated[str, typer.Option(help="レスポンスの形式を指定します")] = None,
     json: Annotated[str, typer.Option(help="指定したファイルにJSON形式で保存します")] = None,
     csv: Annotated[str, typer.Option(help="指定したファイルにCSV形式で保存します")] = None,
+    version: Annotated[bool, typer.Option(help="バージョンを表示します")] = False,
 ) -> None:
-    data: dict = ConnpassClient().get(
-        event_id=event_id,
-        keyword=keyword,
-        keyword_or=keyword_or,
-        ym=ym,
-        ymd=ymd,
-        nickname=nickname,
-        owner_nickname=owner_nickname,
-        series_id=series_id,
-        start=start,
-        order=order,
-        count=count,
-        format=format,
-    )
-    if all((json is None, csv is None)):
-        pprint(data)
-    if json:
-        Writer(data).to_json(json)
-    if csv:
-        Writer(data).to_csv(csv)
+    if any(
+        (
+            event_id,
+            keyword,
+            keyword_or,
+            ym,
+            nickname,
+            owner_nickname,
+            series_id,
+            start,
+            order,
+            count,
+            format,
+        )
+    ):
+        data: dict = ConnpassClient().get(
+            event_id=event_id,
+            keyword=keyword,
+            keyword_or=keyword_or,
+            ym=ym,
+            ymd=ymd,
+            nickname=nickname,
+            owner_nickname=owner_nickname,
+            series_id=series_id,
+            start=start,
+            order=order,
+            count=count,
+            format=format,
+        )
+        if all((json is None, csv is None)):
+            pprint(data)
+        if json:
+            Writer(data).to_json(json)
+        if csv:
+            Writer(data).to_csv(csv)
+    if version:
+        typer.echo(__version__)
