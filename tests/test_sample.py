@@ -29,6 +29,7 @@ Options:
   --format TEXT                   レスポンスの形式を指定します
   --json TEXT                     指定したファイルにJSON形式で保存します
   --csv TEXT                      指定したファイルにCSV形式で保存します
+  --version / --no-version        バージョンを表示します  [default: no-version]
   --install-completion [bash|zsh|fish|powershell|pwsh]
                                   Install completion for the specified shell.
   --show-completion [bash|zsh|fish|powershell|pwsh]
@@ -37,8 +38,6 @@ Options:
   --help                          Show this message and exit."""
     runner = CliRunner()
     result = runner.invoke(connpass_client.app, ["--help"])
+    with open("a.txt", "w") as f:
+        f.write(result.stdout)
     assert expected_result == result.stdout.rstrip()
-
-
-def test_version():
-    print(connpass_client.__version__)
